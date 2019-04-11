@@ -10,7 +10,8 @@ class App extends Component {
     currencyTo: null,
     currentPrice: null,
     dailyHigh: null,
-    dailyLow: null
+    dailyLow: null,
+    twentyfourVol: null
   }
 
   setCurrencyFrom = name => {
@@ -38,6 +39,11 @@ class App extends Component {
       dailyLow: rate
     })
   }
+  setTwentyFourVol = rate => {
+    this.setState({
+      twentyfourVol: rate
+    })
+  }
   
   render() {
     return (
@@ -52,6 +58,7 @@ class App extends Component {
           setCurrentPriceText = { this.setCurrentPrice }
           setHighPriceText = { this.setDailyHigh }
           setLowPriceText = { this.setDailyLow }
+          setTwentyFourVol = { this.setTwentyFourVol }
         />
         
         <Display 
@@ -60,6 +67,7 @@ class App extends Component {
           currentPrice = { this.state.currentPrice } 
           dailyHigh = { this.state.dailyHigh }
           dailyLow = { this.state.dailyLow }
+          twentyfourVol = { this.state.twentyfourVol }
         />
         </header>
       </div>

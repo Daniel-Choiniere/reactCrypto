@@ -26,8 +26,6 @@ class Input extends Component{
   handleClick = () => {
     // console.log("currencyFrom:", this.state.currencyFrom, "currencyTo:", this.state.currencyTo
     // );
-    
-    
     const apiKey = "ca3b404dc625877be9cbb92a470e9dfdecafc2dc2a7a8ac6922bc3769e742df9";
     
     const url = "https://min-api.cryptocompare.com/data/pricemultifull?fsyms=" + this.state.currencyFrom + "&tsyms=" + this.state.currencyTo + "&api_key=" + apiKey;
@@ -39,12 +37,14 @@ class Input extends Component{
       this.setState({
         currentPrice: response.data.DISPLAY[this.state.currencyFrom][this.state.currencyTo].PRICE,
         dailyHigh: response.data.DISPLAY[this.state.currencyFrom][this.state.currencyTo].HIGHDAY,
-        dailyLow: response.data.DISPLAY[this.state.currencyFrom][this.state.currencyTo].LOWDAY
+        dailyLow: response.data.DISPLAY[this.state.currencyFrom][this.state.currencyTo].LOWDAY,
+        twentyfourVol: response.data.DISPLAY[this.state.currencyFrom][this.state.currencyTo].VOLUMEHOURTO
       });
       // console.log(this.state);
       this.props.setCurrentPriceText(this.state.currentPrice);
       this.props.setHighPriceText(this.state.dailyHigh);
       this.props.setLowPriceText(this.state.dailyLow);
+      this.props.setTwentyFourVol(this.state.twentyfourVol);
     });
     
     this.props.setCurrencyFromName(this.state.currencyFrom);
