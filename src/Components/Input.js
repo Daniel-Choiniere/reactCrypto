@@ -8,7 +8,8 @@ class Input extends Component{
     currencyTo: null,
     currentPrice: null,
     dailyHigh: null,
-    dailyLow: null
+    dailyLow: null,
+    twentyfourVol: null
   }
   
   setCurrencyFrom = e => {
@@ -45,16 +46,15 @@ class Input extends Component{
       this.props.setHighPriceText(this.state.dailyHigh);
       this.props.setLowPriceText(this.state.dailyLow);
       this.props.setTwentyFourVol(this.state.twentyfourVol);
+      this.props.setCurrencyFromName(this.state.currencyFrom);
+      this.props.setCurrencyToName(this.state.currencyTo);
     });
-    
-    this.props.setCurrencyFromName(this.state.currencyFrom);
-    this.props.setCurrencyToName(this.state.currencyTo);
   }
   
     render(){
       return(
         <div>
-          <input id="curForm" onChange={ this.setCurrencyFrom } placeholder="Currency From"/>
+          <input id="curFrom" onChange={ this.setCurrencyFrom } placeholder="Currency From"/>
           <input id="curTo" onChange={ this.setCurrencyTo } placeholder="Currency To" />
           <br></br>
           <input onChange={ this.setCashToConvert } placeholder="Amount to convert"/>
