@@ -5,7 +5,9 @@ class Input extends Component{
   state={
     currencyFrom: null,
     currencyTo: null,
-    exchangeRate: null
+    currentPrice: null,
+    dailyHigh: null,
+    dailyLow: null
   }
   
   setCurrencyFrom = e => {
@@ -21,22 +23,26 @@ class Input extends Component{
   }
   
   handleClick = () => {
-    console.log("currencyFrom:", this.state.currencyFrom, "currencyTo:", this.state.currencyTo
-    );
+    // console.log("currencyFrom:", this.state.currencyFrom, "currencyTo:", this.state.currencyTo
+    // );
     
     const apiKey = "ca3b404dc625877be9cbb92a470e9dfdecafc2dc2a7a8ac6922bc3769e742df9";
     
     const url = "https://min-api.cryptocompare.com/data/pricemultifull?fsyms=" + this.state.currencyFrom + "&tsyms=" + this.state.currencyTo + "&api_key=" + apiKey;
-    console.log(url);
+    // console.log(url);
     
     axios(url)
     .then(response=>{
       console.log(response.data);
       this.setState({
-        exchangeRate: response.data.DISPLAY[this.state.currencyFrom][this.state.currencyTo].PRICE
+        currentPrice: response.data.DISPLAY[this.state.currencyFrom][this.state.currencyTo].PRICE,
+        dailyHigh: response.data.DISPLAY[this.state.currencyFrom][this.state.currencyTo].HIGHDAY,
+        dailyLow: response.data.DISPLAY[this.state.currencyFrom][this.state.currencyTo].LOWDAY
       });
-      console.log(this.state);
-      this.props.setCurrencyText(this.state.exchangeRate);
+      // console.log(this.state);
+      this.props.setCurrentPriceText(this.state.currentPrice);
+      this.props.setHighPriceText(this.state.dailyHigh);
+      this.props.setLowPriceText(this.state.dailyLow);
     });
     
     this.props.setCurrencyFromName(this.state.currencyFrom);
@@ -46,9 +52,11 @@ class Input extends Component{
     render(){
       return(
         <div>
-          <input onChange={this.setCurrencyFrom} placeholder="Currency From"/>
-          <input onChange={this.setCurrencyTo} placeholder="Currency To" />
-          <button onClick={this.handleClick} >Get Exchange Rate </button>
+          <input onChange={ this.setCurrencyFrom } placeholder="Currency From"/>
+          <input onChange={ this.setCurrencyTo } placeholder="Currency To" />
+          <br></br>
+          <input onChange={ this.setCashToConvert } placeholder="Amount to convert"/>
+          <button onClick={ this.handleClick } >Get Exchange Rate </button>
         </div>
       );
     }

@@ -5,10 +5,12 @@ import Input from "./Components/Input";
 import Display from "./Components/Display";
 
 class App extends Component {
-   state = {
+  state = {
     currencyFrom: null,
     currencyTo: null,
-    exchangeRate: null
+    currentPrice: null,
+    dailyHigh: null,
+    dailyLow: null
   }
 
   setCurrencyFrom = name => {
@@ -21,29 +23,45 @@ class App extends Component {
       currencyTo: name
     })
   }
-  setExchange = rate => {
+  setCurrentPrice = rate => {
     this.setState({
-      exchangeRate: rate
+      currentPrice: rate
     })
   }
-
+  setDailyHigh = rate => {
+    this.setState({
+      dailyHigh: rate
+    })
+  }
+  setDailyLow = rate => {
+    this.setState({
+      dailyLow: rate
+    })
+  }
+  
   render() {
     return (
       <div className="App">
         <header className="App-header">
+          <h1>Cryptocurrency Conversion</h1>
           <img src={ logo } className="App-logo" alt="logo" />
-        </header>
+        
         <Input 
-          setCurrencyFromName = {this.setCurrencyFrom}
-          setCurrencyToName = {this.setCurrencyTo}
-          setCurrencyText = {this.setExchange}
+          setCurrencyFromName = { this.setCurrencyFrom }
+          setCurrencyToName = { this.setCurrencyTo }
+          setCurrentPriceText = { this.setCurrentPrice }
+          setHighPriceText = { this.setDailyHigh }
+          setLowPriceText = { this.setDailyLow }
         />
         
         <Display 
-          from={this.state.currencyFrom} 
-          to= {this.state.currencyTo}
-          exchange={this.state.exchangeRate} 
+          from={ this.state.currencyFrom } 
+          to= { this.state.currencyTo }
+          currentPrice={ this.state.currentPrice } 
+          dailyHigh = { this.state.dailyHigh }
+          dailyLow = { this.state.dailyLow }
         />
+        </header>
       </div>
     );
   }
