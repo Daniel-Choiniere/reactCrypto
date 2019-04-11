@@ -57,7 +57,7 @@ class App extends Component {
         <Display 
           from={ this.state.currencyFrom } 
           to= { this.state.currencyTo }
-          currentPrice={ this.state.currentPrice } 
+          currentPrice = { this.state.currentPrice } 
           dailyHigh = { this.state.dailyHigh }
           dailyLow = { this.state.dailyLow }
         />

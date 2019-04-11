@@ -1,3 +1,28 @@
+input {
+  width: 100%;
+  height: 30px;
+  border-radius: 5px;
+  margin: 8px 0;
+}
+
+button {
+  height: 40px;
+  width : 200px;
+  font-size: 15px;
+  font-weight: bold;
+}
+
+button:hover {
+  cursor: pointer;
+  color: #eb5d33;
+  font-weight: bolder;
+  font-size: 17px;
+}
+
+input:hover {
+  border:color #eb5d33;
+  box-shadow: 0 0 20px 0 #eb5d33;
+}
 
 .App {
   text-align: center;

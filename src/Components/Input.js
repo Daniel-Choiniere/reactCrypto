@@ -1,5 +1,6 @@
 import React, {Component} from "react";
 import axios from "axios";
+import '../App.css';
 
 class Input extends Component{
   state={
@@ -25,6 +26,7 @@ class Input extends Component{
   handleClick = () => {
     // console.log("currencyFrom:", this.state.currencyFrom, "currencyTo:", this.state.currencyTo
     // );
+    
     
     const apiKey = "ca3b404dc625877be9cbb92a470e9dfdecafc2dc2a7a8ac6922bc3769e742df9";
     
@@ -52,11 +54,11 @@ class Input extends Component{
     render(){
       return(
         <div>
-          <input onChange={ this.setCurrencyFrom } placeholder="Currency From"/>
-          <input onChange={ this.setCurrencyTo } placeholder="Currency To" />
+          <input id="curForm" onChange={ this.setCurrencyFrom } placeholder="Currency From"/>
+          <input id="curTo" onChange={ this.setCurrencyTo } placeholder="Currency To" />
           <br></br>
           <input onChange={ this.setCashToConvert } placeholder="Amount to convert"/>
-          <button onClick={ this.handleClick } >Get Exchange Rate </button>
+          <button onClick={ this.handleClick } >GET EXCHANGE RATE </button>
         </div>
       );
     }
