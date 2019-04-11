@@ -21,8 +21,10 @@ class App extends Component {
       currencyTo: name
     })
   }
-  setExchange = lyrics => {
-    this.setState({ lyrics })
+  setExchange = rate => {
+    this.setState({
+      exchangeRate: rate
+    })
   }
 
   render() {
