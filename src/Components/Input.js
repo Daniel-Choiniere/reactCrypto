@@ -33,7 +33,7 @@ class Input extends Component{
     .then(response=>{
       console.log(response.data);
       this.setState({
-        exchangeRate: response.data.RAW[this.state.currencyFrom][this.state.currencyTo].PRICE
+        exchangeRate: response.data.DISPLAY[this.state.currencyFrom][this.state.currencyTo].PRICE
       });
       console.log(this.state);
       this.props.setCurrencyText(this.state.exchangeRate);
