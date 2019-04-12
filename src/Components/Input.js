@@ -43,7 +43,7 @@ class Input extends Component{
     .then(response=>{
       console.log(response.data);
       this.setState({
-        currentPrice: response.data.RAW[this.state.currencyFrom][this.state.currencyTo].PRICE,
+        currentPrice: response.data.DISPLAY[this.state.currencyFrom][this.state.currencyTo].PRICE,
         dailyHigh: response.data.DISPLAY[this.state.currencyFrom][this.state.currencyTo].HIGHDAY,
         dailyLow: response.data.DISPLAY[this.state.currencyFrom][this.state.currencyTo].LOWDAY,
         twentyfourVol: response.data.DISPLAY[this.state.currencyFrom][this.state.currencyTo].VOLUMEHOURTO
