@@ -15,13 +15,13 @@ class Input extends Component{
   
   setCurrencyFrom = e => {
     this.setState({
-      currencyFrom: e.target.value
+      currencyFrom: e.target.value.toUpperCase()
     });
   }
   
   setCurrencyTo = e => {
     this.setState({
-      currencyTo: e.target.value
+      currencyTo: e.target.value.toUpperCase()
     });
   }
   
