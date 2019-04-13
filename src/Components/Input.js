@@ -9,25 +9,18 @@ class Input extends Component{
     currentPrice: null,
     dailyHigh: null,
     dailyLow: null,
-    twentyfourVol: null,
-    cashConvert: null
+    twentyfourVol: null
   }
   
   setCurrencyFrom = e => {
     this.setState({
-      currencyFrom: e.target.value.toUpperCase()
+      currencyFrom: e.target.value
     });
   }
   
   setCurrencyTo = e => {
     this.setState({
-      currencyTo: e.target.value.toUpperCase()
-    });
-  }
-  
-  cashToConvert = e => {
-    this.setState({
-      cashConvert: e.target.value
+      currencyTo: e.target.value
     });
   }
   
@@ -49,15 +42,12 @@ class Input extends Component{
         twentyfourVol: response.data.DISPLAY[this.state.currencyFrom][this.state.currencyTo].VOLUMEHOURTO
       });
       // console.log(this.state);
-      // We set up our props to be used in other routes/files
       this.props.setCurrentPriceText(this.state.currentPrice);
       this.props.setHighPriceText(this.state.dailyHigh);
       this.props.setLowPriceText(this.state.dailyLow);
       this.props.setTwentyFourVol(this.state.twentyfourVol);
       this.props.setCurrencyFromName(this.state.currencyFrom);
       this.props.setCurrencyToName(this.state.currencyTo);
-      this.props.setCashConvert(this.state.cashConvert);
-      console.log(this.state.cashConvert);
     });
   }
   
@@ -67,7 +57,7 @@ class Input extends Component{
           <input id="curFrom" onChange={ this.setCurrencyFrom } placeholder="Currency From"/>
           <input id="curTo" onChange={ this.setCurrencyTo } placeholder="Currency To" />
           <br></br>
-          <input onChange={ this.cashToConvert } placeholder="Amount to convert"/>
+          <input onChange={ this.setCashToConvert } placeholder="Amount to convert"/>
           <button onClick={ this.handleClick } >GET EXCHANGE RATE </button>
         </div>
       );
